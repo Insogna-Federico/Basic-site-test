@@ -47,7 +47,6 @@ fieldset{
   border: none;
   width: 80%; 
   box-sizing: border-box;
-  content-align: center;
 }
 
 input{ 
@@ -73,10 +72,10 @@ input:focus,textarea:focus {
         let ogg = $("#ogg").val() ;
 	let msg = $("#msg").val() ;
 	
-	if(nome == "" || email == "" || tele == "" || ogg == "")
+	if( nome == "" || email == "" || tele == "" || ogg == "" )
 	{
 		alert("Attenzione: Compilare tutti i campi richiesti!");
-	}
+        }
 	else
 	{		
 		let response = "";
@@ -86,8 +85,18 @@ input:focus,textarea:focus {
                 response += "il tuo messaggio riguarda: " + ogg + ", " ;
                 response += "il tuo messaggio è: " + msg + "." ;
                 alert(response);
-	}	
+	}
  }
+</script>
+<script>
+$(document).ready(function(){
+  $("input[type='button']").click(function(){
+    if( $("#nome").val() == "" ){ $(function(){ $("#nome").css("border","2px solid firebrick") } ) };
+    if( $("#email").val() == "" ){ $(function(){ $("#email").css("border","2px solid firebrick") } ) };
+    if( $("#tele").val() == "" ){ $(function(){ $("#tele").css("border","2px solid firebrick") } ) };
+    if( $("#ogg").val() == "" ){ $(function(){ $("#ogg").css("border","2px solid firebrick") } ) };
+  });
+});
 </script>
 </head>
 <body>
@@ -131,7 +140,7 @@ input:focus,textarea:focus {
         <label><input type="text" id="nome" class="form-control" name="nome" placeholder="Il tuo nome"></label>
       </div>
       <div class="col">
-        <label><input type="tel" id="tele" class="form-control" name="telefono" placeholder="Telefono" pattern="[0-9]{10}"></label>
+        <label><input type="tel" id="tele" class="form-control" name="telefono" placeholder="Telefono"></label>
       </div>
     </div>
     <div class="row">
